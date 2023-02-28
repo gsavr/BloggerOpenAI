@@ -15,7 +15,7 @@ export const AppLayout = ({ children, ...rest }) => {
         <Link
           key={post._id}
           href={`/posts/${post._id}`}
-          className={`my-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-md border px-2 ${
+          className={`my-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-md border px-2 transition-all ${
             rest.postId === post._id
               ? "border-white bg-white/20"
               : " border-white/0 bg-white/10"
@@ -31,7 +31,7 @@ export const AppLayout = ({ children, ...rest }) => {
   return (
     <>
       <div className="flex h-screen max-h-screen">
-        <div className="flex w-1/5 flex-col justify-between overflow-hidden bg-gradient-to-br from-[#243665] to-[#8bd8bd] text-white">
+        <div className=" flex w-1/5 flex-col justify-between overflow-hidden bg-gradient-to-br from-[#243665] to-[#8bd8bd] text-white">
           <div className="flex flex-col px-2">
             <Logo />
             <Link href="/posts/new" className="btn">
@@ -44,12 +44,12 @@ export const AppLayout = ({ children, ...rest }) => {
               </Link>
             </div>
             <div className="mx-auto mt-3">Latest Topics</div>
-            <div className="flex min-h-0 flex-1 flex-col overflow-auto">
+            <div className="flex min-h-0 flex-1 flex-col overflow-auto overscroll-contain">
               {renderPosts()}
             </div>
           </div>
           <div>
-            <div className="flex h-20 items-center gap-2 border-t border-t-[#243665]/30 px-2">
+            <div className=" flex h-20 items-center gap-2 border-t border-t-[#243665]/30 px-2">
               {user ? (
                 <>
                   <div>
@@ -61,11 +61,11 @@ export const AppLayout = ({ children, ...rest }) => {
                       width={50}
                     />
                   </div>
-                  <div className="peer">
-                    <div className="peer text-sm">{user.name}</div>
-                    <div className="peer text-sm">{user.email}</div>
+                  <div>
+                    <div className="text-sm">{user.name}</div>
+                    <div className="text-sm">{user.email}</div>
                     <Link
-                      className="text-xs text-opacity-0 transition-all hover:text-opacity-100 peer-hover:text-opacity-100"
+                      className="text-xs transition-all"
                       href="/api/auth/logout"
                     >
                       Logout
