@@ -4,7 +4,7 @@ import { getAppProps } from "../utils/getAppProps";
 
 export default function Success(props) {
   return (
-    <div>
+    <div className=" pt-7">
       <h1>Thank you for your purchase</h1>
     </div>
   );

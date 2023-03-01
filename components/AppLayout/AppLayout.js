@@ -3,17 +3,25 @@ import { faCircleDollarToSlot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { HamburgerButton } from "../HamburgerButton/hamburgerButton";
 import { Logo } from "../Logo/logo";
 
 export const AppLayout = ({ children, ...rest }) => {
   const { user } = useUser();
+  const [open, setOpen] = useState("hidden");
+  const [opening, setOpening] = useState("closing");
+  const [menuOpen, setMenuOpen] = useState("closed");
+  const [start, setStart] = useState(0);
+  const [end, setEnd] = useState(10);
   //console.log(rest);
 
   const renderPosts = () => {
-    return rest.posts.map((post) => {
+    return rest.posts.slice(start, end).map((post) => {
       return (
         <Link
           key={post._id}
+          onClick={() => closeMobileMenu()}
           href={`/posts/${post._id}`}
           className={`my-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-md border px-2 transition-all ${
             rest.postId === post._id
@@ -28,24 +36,87 @@ export const AppLayout = ({ children, ...rest }) => {
     });
   };
 
+  const closeMobileMenu = () => {
+    setOpening("closing");
+    setMenuOpen("closed");
+    setTimeout(() => {
+      setOpen("hidden");
+    }, 500);
+  };
+
+  const renderPrevButton = () => {
+    if (start > 0) {
+      return (
+        <button
+          className="btn mx-1 flex w-20 py-1 px-2 text-center text-xs tracking-tighter"
+          onClick={() => {
+            setStart(start - 10);
+            setEnd(end - 10);
+          }}
+        >
+          <span className="mx-auto">Previous</span>
+        </button>
+      );
+    }
+  };
+  const renderNextButton = () => {
+    if (rest.posts.length > end - 1) {
+      return (
+        <button
+          className="btn mx-1 flex w-20 py-1 px-2 text-center text-xs tracking-tighter"
+          onClick={() => {
+            setStart(start + 10);
+            setEnd(end + 10);
+          }}
+        >
+          <span className="mx-auto"> Next</span>
+        </button>
+      );
+    }
+  };
+
   return (
     <>
-      <div className="flex h-screen max-h-screen">
-        <div className=" flex w-1/5 flex-col justify-between overflow-auto bg-gradient-to-br from-[#243665] to-[#8bd8bd] text-white">
+      <div className="relative flex h-screen max-h-screen">
+        <HamburgerButton
+          open={open}
+          setOpen={setOpen}
+          opening={opening}
+          setOpening={setOpening}
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+        />
+        <div
+          className={`${open} ${opening} w-full flex-col justify-between overflow-auto bg-gradient-to-br from-[#243665] to-[#8bd8bd] text-white transition-all duration-200 md:w-1/3 lg:flex lg:w-1/5`}
+        >
           <div className="flex flex-col px-2">
             <Logo />
-            <Link href="/posts/new" className="btn">
+            <Link
+              href="/posts/new"
+              className="btn"
+              onClick={() => closeMobileMenu()}
+            >
               New Post
             </Link>
             <div className="mt-2 flex flex-row items-center justify-center">
               <FontAwesomeIcon icon={faCircleDollarToSlot} />
-              <Link href="/token-topup" className=" text-center">
+              <Link
+                href="/token-topup"
+                className=" text-center"
+                onClick={() => closeMobileMenu()}
+              >
                 <span className="pl-1">{rest.availableTokens} tokens</span>
               </Link>
             </div>
-            <div className="mx-auto mt-3">Latest Topics</div>
+            {rest.posts.length > 0 && (
+              <div className="mx-auto mt-3">Latest Topics</div>
+            )}
             <div className="flex flex-1 flex-col overflow-auto overscroll-contain">
               {renderPosts()}
+              <div className="my-2 flex flex-row justify-evenly">
+                {renderPrevButton()}
+                {renderNextButton()}
+              </div>
             </div>
           </div>
           <div>

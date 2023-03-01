@@ -9,7 +9,7 @@ import { getAppProps } from "../../utils/getAppProps";
 export default function Post(props) {
   //console.log(props);
   return (
-    <div className="mx-auto mb-7 flex h-fit justify-center px-7 lg:px-0">
+    <div className="mx-auto mb-7 flex h-fit justify-center px-7 pt-8 lg:px-0">
       <div className="max-w-screen-sm">
         {props.created}
         <div className="mt-6 rounded-sm bg-[#8bd8bd]/70 p-2 text-sm font-bold">

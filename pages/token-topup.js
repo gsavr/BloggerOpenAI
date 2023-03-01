@@ -13,7 +13,7 @@ export default function TokenTopup(props) {
   };
 
   return (
-    <div>
+    <div className=" pt-7">
       <h1>This is the token topup page</h1>
       <button className="btn" onClick={handleClick}>
         Add tokens
