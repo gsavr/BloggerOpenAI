@@ -26,9 +26,9 @@ export const HamburgerButton = (props) => {
         type="button"
         className={`${menuOpen} hamburger z-40 block focus:outline-none lg:hidden`}
       >
-        <span className="hamburger-top bg-black dark:bg-white"></span>
-        <span className="hamburger-middle bg-black dark:bg-white"></span>
-        <span className="hamburger-bottom bg-black dark:bg-white"></span>
+        <span className="hamburger-top  "></span>
+        <span className="hamburger-middle  "></span>
+        <span className="hamburger-bottom  "></span>
       </button>
     </div>
   );
