@@ -31,7 +31,12 @@ export default withApiAuthRequired(async function handler(req, res) {
   //from form in generate blog component
   const { topic, keywords } = req.body;
 
+  //backend validation of form
   if (!topic || !keywords) {
+    res.status(422);
+    return;
+  }
+  if (topic.length > 120 || keywords.length > 80) {
     res.status(422);
     return;
   }
@@ -43,8 +48,8 @@ export default withApiAuthRequired(async function handler(req, res) {
     max_tokens: 800,
     prompt: `Write a detailed SEO-friendly blog post about ${topic}, that targets the following comma-separated keywords: ${keywords}.
     The content should be formatted in SEO-friendly HTML.
-    The response must also in clude appropriate HTML title and meta description content. 
-    The return formatmust be stringified JSON in the following format: 
+    The response must also include appropriate HTML title and meta description content. 
+    The return format must be stringified JSON in the following format: 
     {
       "postContent": post content here
       "title": title goes here

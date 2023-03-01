@@ -1,6 +1,10 @@
 import "../styles/globals.css";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { Roboto_Serif, Roboto } from "@next/font/google";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
+//above stop fontawesome from being huge for a moment in production
 
 //implement google fonts by assigning them to a variable
 const roboto = Roboto({

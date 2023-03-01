@@ -7,7 +7,7 @@ import { Logo } from "../Logo/logo";
 
 export const AppLayout = ({ children, ...rest }) => {
   const { user } = useUser();
-  console.log(rest);
+  //console.log(rest);
 
   const renderPosts = () => {
     return rest.posts.map((post) => {
@@ -31,7 +31,7 @@ export const AppLayout = ({ children, ...rest }) => {
   return (
     <>
       <div className="flex h-screen max-h-screen">
-        <div className=" flex w-1/5 flex-col justify-between overflow-hidden bg-gradient-to-br from-[#243665] to-[#8bd8bd] text-white">
+        <div className=" flex w-1/5 flex-col justify-between overflow-auto bg-gradient-to-br from-[#243665] to-[#8bd8bd] text-white">
           <div className="flex flex-col px-2">
             <Logo />
             <Link href="/posts/new" className="btn">
@@ -44,7 +44,7 @@ export const AppLayout = ({ children, ...rest }) => {
               </Link>
             </div>
             <div className="mx-auto mt-3">Latest Topics</div>
-            <div className="flex min-h-0 flex-1 flex-col overflow-auto overscroll-contain">
+            <div className="flex flex-1 flex-col overflow-auto overscroll-contain">
               {renderPosts()}
             </div>
           </div>
