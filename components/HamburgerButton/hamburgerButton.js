@@ -18,7 +18,7 @@ export const HamburgerButton = (props) => {
   };
 
   return (
-    <div className="absolute z-50 mt-3 -ml-3 flex items-center md:ml-3 lg:hidden">
+    <div className="absolute z-50 mt-3 -ml-3 flex items-center lg:hidden">
       <div className="pb-2 pr-5"></div>
       <button
         id="menu-btn"
