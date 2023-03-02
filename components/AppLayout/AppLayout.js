@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { HamburgerButton } from "../HamburgerButton/hamburgerButton";
 import { Logo } from "../Logo/logo";
+import { MainWindow } from "../MainWindow";
 
 export const AppLayout = ({ children, ...rest }) => {
   const { user } = useUser();
@@ -87,7 +88,7 @@ export const AppLayout = ({ children, ...rest }) => {
           setMenuOpen={setMenuOpen}
         />
         <div
-          className={`${open} ${opening} w-full flex-col justify-between overflow-auto bg-gradient-to-br from-[#243665] to-[#8bd8bd] text-white transition-all duration-200 md:w-1/3 lg:flex lg:w-1/5`}
+          className={`${open} ${opening} mobile-menu w-full flex-col justify-between overflow-auto bg-gradient-to-br from-[#243665] to-[#8bd8bd] text-white transition-all duration-200 md:w-1/3 lg:flex lg:w-1/5`}
         >
           <div className="flex flex-col px-2">
             <Logo />
@@ -149,7 +150,14 @@ export const AppLayout = ({ children, ...rest }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-1 overflow-auto">{children}</div>
+        <MainWindow
+          open={open}
+          setOpen={setOpen}
+          setOpening={setOpening}
+          setMenuOpen={setMenuOpen}
+        >
+          {children}
+        </MainWindow>
       </div>
     </>
   );

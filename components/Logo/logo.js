@@ -1,11 +1,17 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
+import logo from "../../images/blogger-gs.svg";
 
 export const Logo = () => {
   return (
-    <div className="text-2xl text-center py-4 font-heading">
-      Blogger-GS
-      <FontAwesomeIcon icon={faPaperPlane} className="text-slate-400" />
+    <div className="mx-auto flex items-center justify-center py-4 text-center font-heading text-2xl">
+      <span className="mr-1">Blogger-GS</span>{" "}
+      <Image
+        src={logo}
+        alt="logo"
+        width={40}
+        height={40}
+        className=" opacity-80"
+      />
     </div>
   );
 };

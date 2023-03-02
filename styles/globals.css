@@ -97,13 +97,18 @@
     transform: rotate(-45deg) translateY(6px) translateX(-6px);
     background: white;
   }
+  @media (max-width: 1022px) {
+    .opening {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+    .closing {
+      transform: translateX(-300px);
+      opacity: 0;
+    }
 
-  .opening {
-    transform: translateX(0px);
-    opacity: 1;
-  }
-  .closing {
-    transform: translateX(-300px);
-    opacity: 0;
+    .mobile-menu {
+      @apply absolute top-0 bottom-0 left-0 z-20;
+    }
   }
 }
