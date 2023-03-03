@@ -9,7 +9,7 @@ import { getAppProps } from "../../utils/getAppProps";
 export default function Post(props) {
   //console.log(props);
   return (
-    <div className="mx-auto mb-7 flex h-fit justify-center pl-12 pr-7 pt-8 md:px-7 lg:px-0">
+    <div className="mx-auto mb-7 flex justify-center pl-12 pr-7 pt-8 md:px-7 lg:px-0">
       <div className="max-w-screen-sm">
         {props.created}
         <div className="mt-6 rounded-sm bg-[#8bd8bd]/70 p-2 text-sm font-bold">
@@ -26,7 +26,7 @@ export default function Post(props) {
         <div className="mt-6 rounded-sm bg-[#8bd8bd]/70 p-2 text-sm font-bold">
           Keywords
         </div>
-        <div className="flex flex-wrap gap-1 pt-2">
+        <div className="flex flex-wrap gap-1 pt-2 pb-7">
           {props.keywords.split(",").map((keyword, i) => {
             return (
               <div className="rounded-full bg-[#243665] p-2 text-white" key={i}>

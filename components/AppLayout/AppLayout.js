@@ -100,12 +100,13 @@ export const AppLayout = ({ children, ...rest }) => {
               New Post
             </Link>
             <div className="mt-2 flex flex-row items-center justify-center">
-              <FontAwesomeIcon icon={faCircleDollarToSlot} />
               <Link
-                href="/token-topup"
+                href="/account"
                 className=" text-center"
                 onClick={() => closeMobileMenu()}
               >
+                <span className="pr-2">Account: </span>
+                <FontAwesomeIcon icon={faCircleDollarToSlot} />
                 <span className="pl-1">{rest.availableTokens} tokens</span>
               </Link>
             </div>

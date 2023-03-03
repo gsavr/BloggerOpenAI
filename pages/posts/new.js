@@ -43,14 +43,14 @@ export default function NewPost() {
   return (
     <>
       {loading ? (
-        <div className="mx-auto flex flex-1 flex-row items-center justify-center">
+        <div className="mx-auto flex flex-1 flex-col items-center justify-evenly md:flex-row md:justify-center">
           <Loading />
         </div>
       ) : (
         <div className="mx-auto flex flex-1 flex-col items-center justify-center bg-[#243665]/10">
           <form
             onSubmit={(e) => handleSubmit(e)}
-            className="rounded-md bg-[#8bd8bd]/30 p-6 shadow-xl"
+            className="flex flex-1 flex-col rounded-md bg-[#8bd8bd]/20 p-6 pt-20 shadow-xl md:flex-none md:bg-[#8bd8bd]/30 md:pt-6"
           >
             <div>
               <label>
@@ -109,7 +109,7 @@ export const getServerSideProps = withPageAuthRequired({
     if (!props.availableTokens || props.availableTokens <= 1) {
       return {
         redirect: {
-          destination: "/token-topup",
+          destination: "/account",
           permanent: false,
         },
       };
