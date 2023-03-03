@@ -24,10 +24,10 @@ export const AppLayout = ({ children, ...rest }) => {
           key={post._id}
           onClick={() => closeMobileMenu()}
           href={`/posts/${post._id}`}
-          className={`my-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-md border px-2 transition-all ${
+          className={`my-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-md border px-2 transition-all hover:bg-white/80 ${
             rest.postId === post._id
-              ? "border-white bg-white/20"
-              : " border-white/0 bg-white/10"
+              ? "border-white bg-white/60"
+              : " border-white/0 bg-white/50"
           }`}
         >
           {/* Capitalize topic */}
@@ -88,10 +88,14 @@ export const AppLayout = ({ children, ...rest }) => {
           setMenuOpen={setMenuOpen}
         />
         <div
-          className={`${open} ${opening} mobile-menu w-full flex-col justify-between overflow-auto bg-gradient-to-br from-[#243665] to-[#8bd8bd] text-white transition-all duration-200 md:w-1/3 lg:flex lg:w-1/5`}
+          className={`${open} ${opening} mobile-menu w-full flex-col justify-between overflow-auto bg-[#BBE7D7] text-black transition-all duration-200 md:w-1/3 lg:flex lg:w-1/5 `}
         >
           <div className="flex flex-col px-2">
-            <Logo />
+            <div className="mx-auto font-body">
+              <Link href="/">
+                <Logo />
+              </Link>
+            </div>
             <Link
               href="/posts/new"
               className="btn"
@@ -111,7 +115,7 @@ export const AppLayout = ({ children, ...rest }) => {
               </Link>
             </div>
             {rest.posts.length > 0 && (
-              <div className="mx-auto mt-3">Latest Topics</div>
+              <div className="mx-auto mt-3">Your Latest Topics</div>
             )}
             <div className="flex flex-1 flex-col overflow-auto overscroll-contain">
               {renderPosts()}

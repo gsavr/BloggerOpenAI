@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { AppLayout } from "../../components/AppLayout";
-import { Loading } from "../../components/Loading/Loading";
+import { Loading } from "../../components/Loading/loading";
 import { getAppProps } from "../../utils/getAppProps";
 
 export default function NewPost() {
@@ -47,7 +47,7 @@ export default function NewPost() {
           <Loading />
         </div>
       ) : (
-        <div className="mx-auto flex flex-1 flex-col items-center justify-center bg-[#243665]/10">
+        <div className="mx-auto flex flex-1 flex-col items-center justify-center">
           <form
             onSubmit={(e) => handleSubmit(e)}
             className="flex flex-1 flex-col rounded-md bg-[#8bd8bd]/20 p-6 pt-20 shadow-xl md:flex-none md:bg-[#8bd8bd]/30 md:pt-6"

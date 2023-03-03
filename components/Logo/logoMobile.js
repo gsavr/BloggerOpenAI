@@ -1,16 +1,16 @@
 import Image from "next/image";
 import logo from "../../images/blogger-gs.svg";
 
-export const Logo = () => {
+export const LogoMobile = () => {
   return (
-    <div className="flex items-center py-4 text-center font-heading text-2xl">
+    <div className="text-md flex items-center py-4 text-center font-heading">
       <Image
         src={logo}
         alt="logo"
-        width={40}
-        height={40}
+        width={35}
+        height={35}
         className=" opacity-80"
-      />
+      />{" "}
       <span className="ml-1">Blogger-GS</span>
     </div>
   );

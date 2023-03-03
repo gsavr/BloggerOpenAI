@@ -1,23 +1,13 @@
-import { getSession } from "@auth0/nextjs-auth0";
 import clientPromise from "../lib/mongodb";
 
-export const getAppProps = async (cntxt) => {
-  //get user from auth0
-  const userSession = await getSession(cntxt.req, cntxt.res);
+export const getLandingProps = async (ctx) => {
   //conect to mongoDB
   const client = await clientPromise;
   const db = client.db("BloggerOpenAI");
-  //find db user that matches auth0
+  //find default db user
   const user = await db.collection("users").findOne({
-    auth0Id: userSession.user.sub,
+    auth0Id: process.env.DEFAULT_BLOGGER,
   });
-  //check whether the user exists in db with posts and tokens
-  if (!user) {
-    return {
-      availableTokens: 2,
-      posts: [],
-    };
-  }
 
   //find posts using params postId that belongs to user
   const posts = await db
@@ -30,13 +20,11 @@ export const getAppProps = async (cntxt) => {
     .toArray();
 
   return {
-    availableTokens: user.availableTokens,
-    //need to conver date and id --  cannot use within json
+    //need to convert date and id --  cannot use within json
     posts: posts.map(({ created, _id, userId, ...rest }) => ({
       _id: _id.toString(),
       created: created.toString().split(" ").slice(0, 5).join(" ").slice(0, -3),
       ...rest,
     })),
-    postId: cntxt.params?.postId || null,
   };
 };

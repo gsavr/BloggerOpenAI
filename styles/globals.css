@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   h1,
   h2,
   h3,
@@ -46,7 +49,7 @@
 
 @layer components {
   .btn {
-    @apply mx-7 w-auto cursor-pointer rounded-md border-2 border-[#8bd8bd] bg-[#8bd8bd] px-4 py-2 text-center font-bold uppercase tracking-wide text-gray-700 transition-all hover:border-2 hover:border-[#8bd8bd]/30 hover:bg-[#243665] hover:text-white disabled:cursor-not-allowed disabled:bg-[#8bd8bd]/20 disabled:text-gray-400 disabled:hover:text-gray-400;
+    @apply mx-7 w-auto cursor-pointer rounded-md border-2 border-white bg-white px-4 py-2 text-center font-bold uppercase tracking-wide text-gray-700 shadow-md transition-all hover:border-2 hover:border-[#8bd8bd]/30 hover:bg-[#8bd8bd]/60 hover:text-white disabled:cursor-not-allowed disabled:bg-[#8bd8bd]/20 disabled:text-gray-400 disabled:hover:text-gray-400;
   }
   /*Hamburger Menu*/
   .hamburger {
