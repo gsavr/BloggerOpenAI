@@ -8,7 +8,7 @@ export const Logo = () => {
         src={logo}
         alt="logo"
         width={40}
-        height={40}
+        height={"auto"}
         className=" opacity-80"
       />
       <span className="ml-1">Blogger-GS</span>
