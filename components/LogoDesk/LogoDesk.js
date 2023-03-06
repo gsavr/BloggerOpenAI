@@ -1,7 +1,7 @@
 import Image from "next/image";
 import logoPic from "../../images/blogger-gs.svg";
 
-export const Logo = () => {
+export const LogoDesk = () => {
   return (
     <div className="flex items-center py-4 text-center font-heading text-2xl">
       <Image

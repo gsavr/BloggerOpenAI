@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { HamburgerButton } from "../HamburgerButton";
-import { Logo } from "../Logo";
+import { LogoDesk } from "../LogoDesk";
 import { MainWindow } from "../MainWindow";
 
 export const AppLayout = ({ children, ...rest }) => {
@@ -93,7 +93,7 @@ export const AppLayout = ({ children, ...rest }) => {
           <div className="flex flex-col px-2">
             <div className="mx-auto font-body">
               <Link href="/">
-                <Logo />
+                <LogoDesk />
               </Link>
             </div>
             <Link

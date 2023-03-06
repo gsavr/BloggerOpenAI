@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Logo } from "../Logo";
+import { LogoDesk } from "../LogoDesk";
 import { LogoMobile } from "../LogoMobile";
 
 export const NavBar = () => {
@@ -10,7 +10,7 @@ export const NavBar = () => {
       {/* Logo  */}
       <div className="ml-8 hidden md:flex">
         <Link href="/">
-          <Logo />
+          <LogoDesk />
         </Link>
       </div>
       <div className="ml-1 flex md:hidden">
