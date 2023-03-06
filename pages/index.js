@@ -1,4 +1,4 @@
-import { LandingLayout } from "../components/LandingLayout";
+import { LandingLayout } from "../components/LandingLayout/LandingLayout";
 import { Hero } from "../components/Hero/hero";
 import { LatestBlogs } from "../components/LatestBlogs/LatestBlogs";
 import { getLandingProps } from "../utils/getLandingProps";

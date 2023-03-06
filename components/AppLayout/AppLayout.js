@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { HamburgerButton } from "../HamburgerButton";
+import { HamburgerButton } from "../HamburgerButton/HamburgerButton";
 import { Logo } from "../Logo/logo";
-import { MainWindow } from "../MainWindow";
+import { MainWindow } from "../MainWindow/MainWindow";
 
 export const AppLayout = ({ children, ...rest }) => {
   const { user } = useUser();

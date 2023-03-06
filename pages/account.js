@@ -1,5 +1,5 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-import { AppLayout } from "../components/AppLayout";
+import { AppLayout } from "../components/AppLayout/AppLayout";
 import { getAppProps } from "../utils/getAppProps";
 import Image from "next/image";
 
