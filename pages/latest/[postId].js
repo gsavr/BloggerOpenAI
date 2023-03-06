@@ -4,8 +4,11 @@ import { ObjectId } from "mongodb";
 import { LandingLayout } from "../../components/LandingLayout";
 import clientPromise from "../../lib/mongodb";
 import { getLandingProps } from "../../utils/getLandingProps";
+import { useRanBlogPic } from "../../hooks/useRanBlogPic";
+import Image from "next/image";
 
 export default function Post(props) {
+  const blogPic = useRanBlogPic();
   //console.log(props);
   return (
     <div className="mx-auto mb-7 flex justify-center pl-12 pr-7 pt-8  md:px-7 lg:px-0">
@@ -14,6 +17,7 @@ export default function Post(props) {
         <div className="mt-6 rounded-sm bg-[#8bd8bd]/70 p-2 text-sm font-bold">
           Blog post
         </div>
+        <Image src={blogPic} alt="blog_pic" className="mt-2 h-auto w-full" />
         <div dangerouslySetInnerHTML={{ __html: props.postContent || "" }} />
         <div className="mt-6 rounded-sm bg-[#8bd8bd]/70 p-2 text-sm font-bold">
           SEO Title and meta description
