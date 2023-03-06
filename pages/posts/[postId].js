@@ -2,7 +2,7 @@ import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { faHashtag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ObjectId } from "mongodb";
-import { AppLayout } from "../../components/AppLayout/AppLayout";
+import { AppLayout } from "../../components/AppLayout";
 import clientPromise from "../../lib/mongodb";
 import { getAppProps } from "../../utils/getAppProps";
 

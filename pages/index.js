@@ -1,6 +1,6 @@
-import { LandingLayout } from "../components/LandingLayout/LandingLayout";
-import { Hero } from "../components/Hero/hero";
-import { LatestBlogs } from "../components/LatestBlogs/LatestBlogs";
+import { LandingLayout } from "../components/LandingLayout";
+import { Hero } from "../components/Hero";
+import { LatestBlogs } from "../components/LatestBlogs";
 import { getLandingProps } from "../utils/getLandingProps";
 
 export default function Home(props) {
