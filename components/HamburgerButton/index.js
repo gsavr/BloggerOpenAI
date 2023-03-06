@@ -1,3 +1,1 @@
-import Component from "./HamburgerButton";
-
-export default Component;
+export * from "./HamburgerButton";

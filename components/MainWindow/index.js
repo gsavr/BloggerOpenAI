@@ -1,1 +1,1 @@
-export * from "./mainWindow";
+export * from "./MainWindow";

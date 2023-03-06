@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { AppLayout } from "../../components/AppLayout";
-import { Loading } from "../../components/Loading/loading";
+import { Loading } from "../../components/Loading";
 import { getAppProps } from "../../utils/getAppProps";
 
 export default function NewPost() {
