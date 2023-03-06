@@ -1,11 +1,11 @@
 import Image from "next/image";
-import logo from "../../images/blogger-gs.svg";
+import logoPic from "../../images/blogger-gs.svg";
 
 export const Logo = () => {
   return (
     <div className="flex items-center py-4 text-center font-heading text-2xl">
       <Image
-        src={logo}
+        src={logoPic}
         alt="logo"
         width={40}
         height={"auto"}
