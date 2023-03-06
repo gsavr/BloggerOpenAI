@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Logo } from "./Logo/logo";
-import { LogoMobile } from "./Logo/logoMobile";
+import { Logo } from "../Logo";
+import { LogoMobile } from "../LogoMobile";
 
 export const NavBar = () => {
   return (
