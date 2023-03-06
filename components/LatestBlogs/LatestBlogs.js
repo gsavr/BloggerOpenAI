@@ -18,11 +18,13 @@ export const LatestBlogs = (props) => {
             key={post._id}
             className="flex flex-col items-start border border-transparent border-b-slate-300 py-4 md:flex-row "
           >
+            {/* did not add link because it warped image */}
             <Image
               src={blogPic}
               alt="blog_image"
               className="mr-4 h-auto w-[175px]"
             />
+
             <div className="flex flex-col">
               <Link
                 key={post._id}

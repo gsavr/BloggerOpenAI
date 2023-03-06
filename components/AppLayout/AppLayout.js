@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { Footer } from "../Footer/Footer";
 import { HamburgerButton } from "../HamburgerButton";
 import { LogoDesk } from "../LogoDesk";
 import { MainWindow } from "../MainWindow";
@@ -164,6 +165,7 @@ export const AppLayout = ({ children, ...rest }) => {
           {children}
         </MainWindow>
       </div>
+      <Footer />
     </>
   );
 };
