@@ -4,8 +4,8 @@ AI-powered SASS solution to generate SEO-optimized blog posts in minutes. Get hi
 
 ### Preview
 
-![preview](/images/bloggerAI-1.gif)
-![preview](/images/bloggerAI-2.gif)
+![preview-1](/images/bloggerAI-1.gif)
+![preview-2](/images/bloggerAI-2.gif)
 
 ### Technologies Used
 
