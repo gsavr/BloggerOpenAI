@@ -41,22 +41,31 @@ export default withApiAuthRequired(async function handler(req, res) {
     return;
   }
 
-  const response = await openai.createCompletion({
-    model: "text-davinci-003",
+  const response = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: [
+      {
+        role: "system",
+        content: "You are a blog post generator.",
+      },
+      {
+        role: "user",
+        content: `Write a long and detailed SEO-friendly blog post about ${topic}, that targets the following comma-separated keywords: ${keywords}.
+        The content should be formatted in SEO-friendly HTML.
+        The response must also include appropriate HTML title and meta description content.
+        The return format must be stringified JSON in the following format:
+        {
+          "postContent": post content here
+          "title": title goes here
+          "metaDescription": meta description goes here
+        }`,
+      },
+    ],
+    max_tokens: 3600,
     temperature: 0,
-    //tokens are how much data you are willing to use, can go up to 3000, but it is paid
-    max_tokens: 1000,
-    prompt: `Write a detailed SEO-friendly blog post about ${topic}, that targets the following comma-separated keywords: ${keywords}.
-    The content should be formatted in SEO-friendly HTML.
-    The response must also include appropriate HTML title and meta description content. 
-    The return format must be stringified JSON in the following format: 
-    {
-      "postContent": post content here
-      "title": title goes here
-      "metaDescription": meta description goes here
-    } `,
   });
   //console.log(response);
+
   //update user with tokens spent
   await db.collection("users").updateOne(
     {
@@ -70,8 +79,8 @@ export default withApiAuthRequired(async function handler(req, res) {
   );
 
   //parse response into JSON
-  const parsed = await JSON.parse(
-    response.data.choices[0]?.text.split("\n").join("")
+  const parsed = JSON.parse(
+    response.data.choices[0]?.message.content.split("\n").join("")
   );
 
   //store post into db library
