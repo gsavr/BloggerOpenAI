@@ -6,7 +6,10 @@ export const Hero = () => (
           AI-powered SASS solution to generate SEO-optimized blog posts in
           minutes. Get high-quality content without sacrificing time.
         </p>
-        <p className="uppercase">Log in to Try Making One!</p>
+        <p>
+          <span className="uppercase">Log in to make your blog post</span> using
+          the GPT-3.5-Turbo model.
+        </p>
       </div>
     </div>
   </div>
