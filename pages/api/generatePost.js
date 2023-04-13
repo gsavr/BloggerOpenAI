@@ -41,7 +41,7 @@ export default withApiAuthRequired(async function handler(req, res) {
     return;
   }
 
-  const response = await openai.createChatCompletion({
+  const postContentResponse = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: [
       {
@@ -50,21 +50,73 @@ export default withApiAuthRequired(async function handler(req, res) {
       },
       {
         role: "user",
-        content: `Write a long and detailed SEO-friendly blog post about ${topic}, that targets the following comma-separated keywords: ${keywords}.
-        The content should be formatted in SEO-friendly HTML.
-        The response must also include appropriate HTML title and meta description content.
-        The return format must be stringified JSON in the following format:
-        {
-          "postContent": post content here
-          "title": title goes here
-          "metaDescription": meta description goes here
-        }`,
+        content: `Write a long and detailed SEO-friendly blog post about ${topic}, that targets the following comma-separated keywords: ${keywords}. 
+      The response should be formatted in SEO-friendly HTML, 
+      limited to the following HTML tags: p, h1, h2, h3, h4, h5, h6, strong, i, ul, li, ol.`,
       },
     ],
-    max_tokens: 3600,
     temperature: 0,
   });
-  //console.log(response);
+
+  const postContent = postContentResponse.data.choices[0]?.message.content;
+
+  const titleResponse = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: [
+      {
+        role: "system",
+        content: "You are a blog post generator.",
+      },
+      {
+        role: "user",
+        content: `Write a long and detailed SEO-friendly blog post about ${topic}, that targets the following comma-separated keywords: ${keywords}. 
+      The response should be formatted in SEO-friendly HTML, limited to the following HTML tags: p, h1, h2, h3, h4, h5, h6, strong, i, ul, li, ol.`,
+      },
+      {
+        role: "assistant",
+        content: postContent,
+      },
+      {
+        role: "user",
+        content: "Generate appropriate title tag text for the above blog post",
+      },
+    ],
+    temperature: 0,
+  });
+
+  const metaDescriptionResponse = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: [
+      {
+        role: "system",
+        content: "You are a blog post generator.",
+      },
+      {
+        role: "user",
+        content: `Write a long and detailed SEO-friendly blog post about ${topic}, that targets the following comma-separated keywords: ${keywords}. 
+      The response should be formatted in SEO-friendly HTML, 
+      limited to the following HTML tags: p, h1, h2, h3, h4, h5, h6, strong, i, ul, li, ol.`,
+      },
+      {
+        role: "assistant",
+        content: postContent,
+      },
+      {
+        role: "user",
+        content:
+          "Generate SEO-friendly meta description content for the above blog post",
+      },
+    ],
+    temperature: 0,
+  });
+
+  const title = titleResponse.data.choices[0]?.message.content;
+  const metaDescription =
+    metaDescriptionResponse.data.choices[0]?.message.content;
+
+  // console.log("Post Content: ", postContent);
+  // console.log("Title: ", title);
+  // console.log("Meta Description: ", metaDescription);
 
   //update user with tokens spent
   await db.collection("users").updateOne(
@@ -78,16 +130,11 @@ export default withApiAuthRequired(async function handler(req, res) {
     }
   );
 
-  //parse response into JSON
-  const parsed = JSON.parse(
-    response.data.choices[0]?.message.content.split("\n").join("")
-  );
-
   //store post into db library
   const post = await db.collection("posts").insertOne({
-    postContent: parsed?.postContent,
-    title: parsed?.title,
-    metaDescription: parsed?.metaDescription,
+    postContent: postContent || "",
+    title: title || "",
+    metaDescription: metaDescription || "",
     topic,
     keywords,
     userId: userProfile._id,
@@ -95,7 +142,7 @@ export default withApiAuthRequired(async function handler(req, res) {
   });
 
   //console.log(post);
-  //post return an acknowleged and insertedId
+  //post returns an acknowleged and insertedId
 
   res.status(200).json({
     postId: post.insertedId,

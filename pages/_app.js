@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "../styles/global.css";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { Roboto_Serif, Roboto } from "@next/font/google";
 import "@fortawesome/fontawesome-svg-core/styles.css";
