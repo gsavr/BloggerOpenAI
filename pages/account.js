@@ -36,7 +36,7 @@ export default function Account(props) {
             <div className="flex flex-1 pl-8">{user.email}</div>
           </div>
           <div className="flex flex-col md:flex-row ">
-            <div className=" w-40">Available Tokens:</div>{" "}
+            <div className=" w-40">Available Tokens:</div>
             <div className="flex flex-1 pl-8">{availableTokens}</div>
           </div>
         </div>
