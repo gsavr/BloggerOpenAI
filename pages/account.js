@@ -28,7 +28,7 @@ export default function Account(props) {
         />
         <div className="pl-0 md:pl-9">
           <div className="flex flex-col md:flex-row ">
-            <div className=" w-40">Name:</div>
+            <div className=" w-40">Name:</div>{" "}
             <div className="flex flex-1 pl-8">{user.name}</div>
           </div>
           <div className="flex flex-col md:flex-row  ">
