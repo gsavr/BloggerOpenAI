@@ -1,4 +1,5 @@
 import "../styles/global.css";
+import Head from "next/head";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { Roboto_Serif, Roboto } from "@next/font/google";
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -24,6 +25,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <UserProvider>
+      <Head>
+        <title>AI Blogger</title>
+        <meta property="og:title" content="AI Blogger" key="title" />
+      </Head>
       <main className={`${roboto.variable} ${robotoSerif.variable} font-body`}>
         {getLayout(<Component {...pageProps} />, pageProps)}
       </main>
