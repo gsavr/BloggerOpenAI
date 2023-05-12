@@ -11,11 +11,15 @@ export const Loading = () => {
 
   const renderMessage = () => {
     return (
-      <div className=" w-72 animate-pulse px-5 text-center text-3xl text-[#243665]">
-        {message === 1 && "Generating Your Blog Post"}
-        {message === 2 && "Spell Check"}
-        {message === 3 && "Tidying Things Up"}
-        {(message === 4 || message === 5 || message === 6) && "Almost Finished"}
+      <div className="flex animate-pulse flex-col text-center text-[#243665]">
+        <div className=" w-72  px-5 text-center text-3xl ">
+          {message === 1 && "Generating Your Blog Post"}
+          {message === 2 && "Spell Check"}
+          {message === 3 && "Tidying Things Up"}
+          {(message === 4 || message === 5 || message === 6) &&
+            "Almost Finished"}
+        </div>
+        <p className="mx-auto">May take up to 1 minute</p>
       </div>
     );
   };
