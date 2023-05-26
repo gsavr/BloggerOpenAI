@@ -44,7 +44,7 @@ export const Footer = () => {
             </div>
             <div>
               <a
-                href="https://github.com/gsavr"
+                href="https://github.com/gsavr/BloggerOpenAI"
                 target="_blank"
                 rel="noreferrer"
               >
