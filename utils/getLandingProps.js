@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { utcToZonedTime } from "date-fns-tz";
 import clientPromise from "../lib/mongodb";
 
 export const getLandingProps = async (ctx) => {
@@ -24,7 +25,10 @@ export const getLandingProps = async (ctx) => {
     //need to convert date and id --  cannot use within json
     posts: posts.map(({ created, _id, userId, ...rest }) => ({
       _id: _id.toString(),
-      created: format(new Date(created), "ccc PPPp"),
+      created: format(
+        utcToZonedTime(new Date(created), "America/New_York"),
+        "ccc PPPp"
+      ),
       ...rest,
     })),
   };

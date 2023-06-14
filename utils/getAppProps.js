@@ -1,5 +1,6 @@
-import { getSession } from "@auth0/nextjs-auth0";
+import { getSession, utcToZonedTime } from "@auth0/nextjs-auth0";
 import { format } from "date-fns";
+import { utcToZonedTime } from "date-fns-tz";
 import clientPromise from "../lib/mongodb";
 
 export const getAppProps = async (cntxt) => {
@@ -35,7 +36,10 @@ export const getAppProps = async (cntxt) => {
     //need to conver date and id --  cannot use within json
     posts: posts.map(({ created, _id, userId, ...rest }) => ({
       _id: _id.toString(),
-      created: format(new Date(created), "ccc PPPp"),
+      created: format(
+        utcToZonedTime(new Date(created), "America/New_York"),
+        "ccc PPPp"
+      ),
       ...rest,
     })),
     postId: cntxt.params?.postId || null,
