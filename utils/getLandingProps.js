@@ -24,7 +24,7 @@ export const getLandingProps = async (ctx) => {
     //need to convert date and id --  cannot use within json
     posts: posts.map(({ created, _id, userId, ...rest }) => ({
       _id: _id.toString(),
-      created: format(new Date(created), "PPPp"),
+      created: format(new Date(created), "ccc PPPp"),
       ...rest,
     })),
   };

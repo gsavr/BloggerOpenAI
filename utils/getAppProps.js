@@ -1,4 +1,5 @@
 import { getSession } from "@auth0/nextjs-auth0";
+import { format } from "date-fns";
 import clientPromise from "../lib/mongodb";
 
 export const getAppProps = async (cntxt) => {
@@ -34,7 +35,7 @@ export const getAppProps = async (cntxt) => {
     //need to conver date and id --  cannot use within json
     posts: posts.map(({ created, _id, userId, ...rest }) => ({
       _id: _id.toString(),
-      created: created.toString().split(" ").slice(0, 5).join(" ").slice(0, -3),
+      created: format(new Date(created), "ccc PPPp"),
       ...rest,
     })),
     postId: cntxt.params?.postId || null,
