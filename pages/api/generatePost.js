@@ -26,7 +26,7 @@ export default withApiAuthRequired(async function handler(req, res) {
   });
   const openai = new OpenAIApi(config);
   //alternate model -- less time
-  const model = "gpt-3.5-turbo , ";
+  const model = "gpt-3.5-turbo-0613";
 
   //from form in generate blog component
   const { topic, keywords } = req.body;
@@ -42,7 +42,7 @@ export default withApiAuthRequired(async function handler(req, res) {
   }
 
   const response = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
+    model: model,
     messages: [
       {
         role: "system",
