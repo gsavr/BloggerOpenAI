@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import clientPromise from "../lib/mongodb";
 
 export const getLandingProps = async (ctx) => {
@@ -23,8 +24,9 @@ export const getLandingProps = async (ctx) => {
     //need to convert date and id --  cannot use within json
     posts: posts.map(({ created, _id, userId, ...rest }) => ({
       _id: _id.toString(),
-      created: created.toString().split(" ").slice(0, 5).join(" ").slice(0, -3),
+      created: format(new Date(created), "PPPp"),
       ...rest,
     })),
   };
 };
+//.toString().split(" ").slice(0, 5).join(" ").slice(0, -3)
